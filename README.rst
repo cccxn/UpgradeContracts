@@ -18,3 +18,4 @@ Git Set-Up
 Start the Work
 ==============
 - brownie compile ;
+- test_box_proxy.py ;

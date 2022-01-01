@@ -12,7 +12,7 @@ def test_proxy_upgrades():
         box.address,
         proxy_admin.address,
         box_encoded_initializer_function,
-        {'from': account, 'gas_limit':1000000}
+        {'from': account, 'gas_limit': 1000000}
     )
     box_v2 = BoxV2.deploy({'from': account})
     proxy_box = Contract.from_abi('BoxV2', proxy.address, BoxV2.abi)

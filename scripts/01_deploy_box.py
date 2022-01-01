@@ -1,5 +1,5 @@
 from brownie import Box, TransparentUpgradeableProxy, ProxyAdmin, config, network, Contract
-from scripts.helpful_scripys import get_account, encode_function_data
+from scripts.helpful_scripts import get_account, encode_function_data
 
 
 def main():
@@ -9,9 +9,9 @@ def main():
         {'from': account},
         publish_source=config['networks'][network.show_active()]['verify']
     )
-
     proxy_admin = ProxyAdmin.deploy({'from': account})
 
+    # initializer = box.store, 1
     box_encoded_initializer_function = encode_function_data()
 
     proxy = TransparentUpgradeableProxy.deploy(
@@ -20,7 +20,7 @@ def main():
         box_encoded_initializer_function,
         {'from': account, 'gas_limit': 1000000}
     )
-
-    print(f"""Proxy deployed to {proxy}! You can now upgrade it o BoxV2!""")
+    print(f"""Proxy deployed to {proxy}! You can now upgrade it to BoxV2!""")
     proxy_box = Contract.from_abi('Box', proxy.address, Box.abi)
-    print(f"""Here is teh initial value in teh Box: {proxy_box.retrieve()}""")
+    proxy_box.store(3, {'from': account})
+    print(f"""Here is the initial value in the Box: {proxy_box.retrieve()}""")

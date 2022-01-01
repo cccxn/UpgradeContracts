@@ -19,7 +19,7 @@ def get_account(number=None):
 
 def encode_function_data(initializer=None, *args):
     if (len(args) == 0) | (initializer is not None):
-        return eth_utils.to_bytes(hexstr='Ox')
+        return eth_utils.to_bytes(hexstr='0x')
     else:
         return initializer.encode_input(*args)
 

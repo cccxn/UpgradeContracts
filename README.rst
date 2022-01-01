@@ -15,3 +15,6 @@ Git Set-Up
 - git remote add origin https://github.com/XXXXXX/UpgradeContracts.git
 - git push -u origin master ;
 
+Start the Work
+==============
+- brownie compile ;

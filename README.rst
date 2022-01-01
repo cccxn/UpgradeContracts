@@ -19,3 +19,4 @@ Start the Work
 ==============
 - brownie compile ;
 - test_box_proxy.py ;
+- brownie test -k test_proxy_upgrades ;
